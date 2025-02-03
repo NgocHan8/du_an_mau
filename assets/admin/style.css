@@ -1,0 +1,21 @@
+.row{
+    height: 100%;
+}
+.navbar a{
+    color: aliceblue;
+    margin: 10% 20% 0;
+}
+.header{
+    list-style-type: none;
+}
+li{
+    padding-bottom: 15px;
+
+}
+a{
+    color: aliceblue;
+    text-decoration: none;
+}
+.col-2{
+    background: rgb(22, 39, 83);
+}

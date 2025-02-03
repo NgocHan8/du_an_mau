@@ -1,0 +1,32 @@
+<?php
+session_start();
+require_once '../configs/env.php';
+require_once '../configs/function.php';
+
+require_once   './controllers/AdminDanhMucController.php';
+require_once   './controllers/AdminSanPhamController.php';
+require_once  './models/SanPham.php';
+require_once  './models/DanhMuc.php';
+
+$act = $_GET['act'] ?? '/';
+
+match ($act)
+{
+    // '/' => (new AdminDanhMucController)->list(),
+
+    // Danh Mục
+    'danh-muc' => (new AdminDanhMucController())->list(),
+    'form-them-danh-muc' => (new AdminDanhMucController())->formAddDanhMuc(),
+    'them-danh-muc'=>(new AdminDanhMucController())->postAddDanhMuc(),
+    'form-sua-danh-muc' => (new AdminDanhMucController())->formEditDanhMuc(),
+    'sua-danh-muc'=>(new AdminDanhMucController())->postEditDanhMuc(),
+    'xoa-danh-muc'=>(new AdminDanhMucController())->destroyDanhMuc(),
+
+    // Sản phẩm
+    'san-pham' =>(new AdminSanPhamController())->listSanPham(),
+    'form-them-san-pham' => (new AdminSanPhamController())->formAddSanPham(),
+    'them-san-pham'=>(new AdminSanPhamController())->postAddSanPham(),
+    // 'form-sua-san-pham' => (new AdminSanPhamController())->formEditSanPham(),
+    // 'sua-san-pham'=>(new AdminSanPhamController())->postEditSanPham(),
+    // 'xoa-san-pham'=>(new AdminSanPhamController())->destroySanPham(),
+};
