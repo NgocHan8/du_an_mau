@@ -5,8 +5,10 @@ require_once '../configs/function.php';
 
 require_once   './controllers/AdminDanhMucController.php';
 require_once   './controllers/AdminSanPhamController.php';
+require_once   './controllers/AdminDonHangController.php';
 require_once  './models/SanPham.php';
 require_once  './models/DanhMuc.php';
+require_once  './models/DonHang.php';
 
 $act = $_GET['act'] ?? '/';
 
@@ -24,9 +26,15 @@ match ($act)
 
     // Sản phẩm
     'san-pham' =>(new AdminSanPhamController())->listSanPham(),
+    'xem-san-pham'=>(new AdminSanPhamController())->showSanPham(),
     'form-them-san-pham' => (new AdminSanPhamController())->formAddSanPham(),
     'them-san-pham'=>(new AdminSanPhamController())->postAddSanPham(),
-    // 'form-sua-san-pham' => (new AdminSanPhamController())->formEditSanPham(),
-    // 'sua-san-pham'=>(new AdminSanPhamController())->postEditSanPham(),
-    // 'xoa-san-pham'=>(new AdminSanPhamController())->destroySanPham(),
+    'form-sua-san-pham' => (new AdminSanPhamController())->formEditSanPham(),
+    'sua-san-pham'=>(new AdminSanPhamController())->postEditSanPham(),
+    'xoa-san-pham'=>(new AdminSanPhamController())->deleteSanPham(),
+    // 'sua-album-anh-san-pham'=>(new AdminSanPhamController())->postEditAnhSanPham(),
+    
+    // Đơn hàng
+    'don-hang' =>(new AdminDonHangController())->listDonHang(),
+    'xem-don-hang' =>(new AdminDonHangController())->getDetailDonHang(),
 };

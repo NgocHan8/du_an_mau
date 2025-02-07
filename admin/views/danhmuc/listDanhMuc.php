@@ -3,7 +3,7 @@
     <div class="col mt-5">
         <div class="container">
             <h1>Danh sách danh mục sản phẩm</h1>
-            <a href="<?= BASE_URL_ADMIN . '?act=form-them-danh-muc' ?>"><button class="btn btn-success">Thêm</button></a>
+            <a href="<?= BASE_URL_ADMIN . '?act=form-them-danh-muc' ?>"><button class="btn btn-success">Thêm danh mục</button></a>
             <?php
             if (isset($_SESSION['message'])): ?>
                 <div class="alert alert-success">

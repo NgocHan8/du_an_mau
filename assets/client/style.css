@@ -1,0 +1,358 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    background: white;
+    border-bottom: 1px solid #eee;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Logo styles */
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-size: 24px;
+    color: #333;
+    font-weight: 600;
+}
+
+.logo svg {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+/* Search bar styles */
+.search-container {
+    position: relative;
+    width: 30%;  /* Reduced from 40% */
+    max-width: 300px;  /* Reduced from 500px */
+}
+
+.search-box {
+    width: 100%;
+    padding: 8px 35px 8px 15px;  /* Reduced padding */
+    border: 2px solid #e8f7fa;
+    border-radius: 20px;  /* Reduced border radius */
+    font-size: 14px;  /* Reduced font size */
+    outline: none;
+    transition: all 0.3s ease;
+    background: #f8fcfd;
+}
+
+.search-box:focus {
+    border-color: #B2E6F0;
+    background: white;
+    box-shadow: 0 2px 6px rgba(178, 230, 240, 0.2);
+}
+
+.search-box::placeholder {
+    color: #999;
+}
+
+.search-button {
+    position: absolute;
+    right: 3px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    padding: 8px;  /* Reduced padding */
+    cursor: pointer;
+    color: #666;
+    transition: color 0.3s ease;
+}
+
+.search-button svg {
+    width: 16px;  /* Reduced icon size */
+    height: 16px;
+}
+
+.search-button:hover {
+    color: #D62839;
+}
+
+
+/* Navigation styles */
+.nav-menu {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: #333;
+}
+
+/* Dropdown styles */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a {
+    color: #333;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f9f9f9;
+}
+/* Cart and Account styles */
+.user-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.user-actions a {
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.user-actions a:hover {
+    color: #D62839;
+}
+
+.cart-link {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 8px 15px;
+    border-radius: 20px;
+    background: #f8fcfd;
+    transition: all 0.3s ease;
+}
+
+.cart-link:hover {
+    background: #e8f7fa;
+}
+
+@media (max-width: 1024px) {
+    .nav-menu {
+        gap: 1.5rem;
+    }
+    
+    .search-container {
+        width: 35%;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+    }
+    
+    .search-container {
+        width: 50%;
+    }
+}
+/* Hero Section */
+.hero {
+    background: #B2E6F0;
+    padding: 2rem 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.hero-content {
+    flex: 1;
+}
+
+.hero-title {
+    color: #D62839;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+    color: #D62839;
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.hero-price {
+    color: #D62839;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.product-card {
+    background: white;
+    border-radius: 10px;
+    padding: 1rem;
+    text-align: center;
+}
+
+/* Product Section */
+.products {
+    padding: 2rem 5%;
+}
+
+.product-section-title {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #333;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 2rem;
+}
+
+.product-item {
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.product-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    margin-bottom: 1rem;
+}
+
+.product-price {
+    color: #D62839;
+    font-weight: bold;
+    margin: 0.5rem 0;
+}
+
+.product-button {
+    background: #D62839;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Footer */
+.footer {
+    background: #B2E6F0;
+    padding: 2rem 5%;
+    margin-top: 2rem;
+}
+
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap; /* Cho phép xuống dòng nếu không đủ chỗ */
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-section, .footer-menu {
+    flex: 1;
+    min-width: 250px; /* Đảm bảo không bị quá nhỏ trên màn hình nhỏ */
+    margin-bottom: 20px;
+}
+
+.footer-section h3, .footer-menu h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    color: #ffcc00; /* Màu vàng nổi bật */
+}
+
+.contact-info p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 10px;
+}
+
+.social-icons img {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+.social-icons img:hover {
+    transform: scale(1.1);
+}
+
+.footer-menu ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-menu li {
+    margin: 8px 0;
+}
+
+.footer-menu a {
+    text-decoration: none;
+    color: #ddd;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+.footer-menu a:hover {
+    color: #ffcc00;
+}
+
+
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+    }
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+}

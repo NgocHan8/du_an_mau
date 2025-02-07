@@ -26,11 +26,13 @@ function connectDB() {
     $pathStorage = $folderUpload.time().$file['name'];
     $from = $file['tmp_name'];
     $to = PATH_ROOT. $pathStorage;
+
     if(move_uploaded_file($from,$to))
     {
         return $pathStorage;
     }
     return null;
+    
  }
  function deleteFile($file)
  {
@@ -45,6 +47,18 @@ function connectDB() {
     if(isset($_SESSION['flash']))
     {
         unset($_SESSION['flash']);
-        unset($_SESSION['error']);
+        session_unset();
     }
+    
+ }
+ function uploadFileAlbum($file,$folderUpload,$key)
+ {
+    $pathStorage = $folderUpload.time().$file['name'][$key];
+    $from = $file['tmp_name'][$key];
+    $to = PATH_ROOT.$pathStorage;
+    if(move_uploaded_file($from,$to))
+    {
+        return $pathStorage;
+    }
+    return null;
  }

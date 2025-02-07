@@ -3,6 +3,6 @@ class HomeController
 {
     public function index()
     {
-        echo 'client';
+        require_once 'Home.php';
     }
 }

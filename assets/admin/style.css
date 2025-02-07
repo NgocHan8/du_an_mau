@@ -1,20 +1,26 @@
 .row{
     height: 100%;
 }
-.navbar a{
+.navbar-brand{
     color: aliceblue;
-    margin: 10% 20% 0;
+    margin: 15% 20% 0;
+    padding-bottom: 12%;
 }
 .header{
     list-style-type: none;
 }
 li{
-    padding-bottom: 15px;
-
+    margin-bottom: 28px;
 }
 a{
     color: aliceblue;
     text-decoration: none;
+    margin-bottom: 100px;
+}
+
+a:hover{
+    color: rgb(128, 179, 223);
+
 }
 .col-2{
     background: rgb(22, 39, 83);
