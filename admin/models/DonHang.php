@@ -48,4 +48,36 @@ class DonHang
         $stmt->execute([':id'=>$id]);
         return $stmt->fetchAll();
     }
+    public function updateDonHang($id,$ten_nguoi_nhan,$email_nguoi_nhan,$sdt_nguoi_nhan,$dia_chi_nguoi_nhan,$ghi_chu,$trang_thai_id)
+    {
+        $sql = 'UPDATE don_hang SET
+        ten_nguoi_nhan = :ten_nguoi_nhan,
+        email_nguoi_nhan = :email_nguoi_nhan,
+        sdt_nguoi_nhan = :sdt_nguoi_nhan,
+        dia_chi_nguoi_nhan = :dia_chi_nguoi_nhan,
+        ghi_chu = :ghi_chu,
+        trang_thai_id = :trang_thai_id
+         WHERE id = :id';
+         $stmt = $this->conn->prepare($sql);
+         $stmt->execute([
+            ':ten_nguoi_nhan' => $ten_nguoi_nhan,
+            ':email_nguoi_nhan' => $email_nguoi_nhan,
+            ':sdt_nguoi_nhan' => $sdt_nguoi_nhan,
+            ':dia_chi_nguoi_nhan' => $dia_chi_nguoi_nhan,
+            ':ghi_chu' => $ghi_chu,
+            ':trang_thai_id' => $trang_thai_id,
+            ':id' => $id
+         ]);
+         return true;
+    }
+    public function getDonHangFromKhachHang($id)
+    {
+        $sql = 'SELECT don_hang.*, trang_thai_don_hang.ten_trang_thai
+        FROM don_hang
+        INNER JOIN trang_thai_don_hang ON don_hang.trang_thai_id = trang_thai_don_hang.id
+        WHERE don_hang.tai_khoan_id = :id';
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([':id'=>$id]);
+        return $stmt->fetchAll();
+    }
 }

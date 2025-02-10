@@ -30,6 +30,7 @@
                     <h4 class="mt-3">Mô tả: <small><?= $sanPham['mo_ta'] ?></small></h4>
                 </div>
             </div>
+            
         </div>
     </div>
     </div>

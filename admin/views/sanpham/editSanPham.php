@@ -2,13 +2,9 @@
     <?php require_once './views/Home.php' ?>
 
     <div class="col mt-5 container">
-        <div class="container row">
-            <div class="col">
+        <div class="container">
                 <h1>Sửa sản phẩm</h1>
-            </div>
-            <div class="col-sm-1">
-                <a href="<?= BASE_URL_ADMIN . '?act=san-pham' ?>" class="btn btn-secondary">Back</a>
-            </div>
+            
             <form action="<?= BASE_URL_ADMIN . '?act=sua-san-pham' ?>" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="san_pham_id" id="" value="<?= $sanPham['id'] ?>">
                 <div class="form-group mb-3">
@@ -59,7 +55,13 @@
                     <textarea name="mo_ta" id="mo_ta" rows="5" class="form-control"><?= $sanPham['mo_ta'] ?></textarea>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <div class="row">
+                    <div class="col">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                <div class="col-sm-1">
+                    <a href="<?= BASE_URL_ADMIN . '?act=san-pham' ?>" class="btn btn-secondary">Back</a>
+                </div>
             </form>
         </div>
     </div>

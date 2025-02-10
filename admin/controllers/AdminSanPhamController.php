@@ -242,6 +242,7 @@ class AdminSanPhamController
         if ($sanPham) {
             deleteFile($sanPham['anh']);
             $this->modelSanPham->destroySanPham($id);
+            $_SESSION['message'] = true;
         }
         // if($listAnh)
         // {

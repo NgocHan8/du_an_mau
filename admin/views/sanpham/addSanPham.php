@@ -2,12 +2,9 @@
     <?php require_once './views/Home.php' ?>
 
     <div class="col mt-5 container">
-        <div class="container row">
-            <div class="col">
-            <h1>Thêm sản phẩm</h1></div>
-            <div class="col-sm-1">
-                <a href="<?= BASE_URL_ADMIN . '?act=san-pham' ?>" class="btn btn-secondary">Back</a>
-            </div>
+        <div class="container ">
+            <h1>Thêm sản phẩm</h1>
+
             <form action="<?= BASE_URL_ADMIN . '?act=them-san-pham' ?>" method="POST" enctype="multipart/form-data">
                 <div class="mb-3">
                     <label class="form-label">Tên sản phẩm</label>
@@ -59,7 +56,13 @@
                     <textarea name="mo_ta" id="mo_ta" rows="5" class="form-control"></textarea>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <div class="row">
+                    <div class="col">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                <div class="col-sm-1">
+                    <a href="<?= BASE_URL_ADMIN . '?act=san-pham' ?>" class="btn btn-secondary">Back</a>
+                </div>
             </form>
         </div>
     </div>

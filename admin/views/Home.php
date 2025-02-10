@@ -10,24 +10,32 @@
 </head>
 
 <body>
-    
+
     <div class="row ">
         <div class="col-2">
             <nav class="navbar">
-                    <a class="navbar-brand" href="#">ADMIN</a>
+                <a class="navbar-brand" href="#">ADMIN</a>
             </nav>
             <ul class="header">
-               <li><a href="/">Dashboard</a></li>
-               <li><a href="?act=danh-muc">Quản lý danh mục</a></li>
-               <li><a href="?act=san-pham">Quản lý sản phẩm</a></li>
-               <li><a href="?act=don-hang">Quản lý đơn hàng</a></li>
-               <li><a href="?act=khach-hang">Quản lý khách hàng</a></li>
+                <li><a href="/">Dashboard</a></li>
+                <li><a href="?act=danh-muc">Quản lý danh mục</a></li>
+                <li><a href="?act=san-pham">Quản lý sản phẩm</a></li>
+                <li><a href="?act=don-hang">Quản lý đơn hàng</a></li>
+                <li>
+                    <a href="#submenu-khach-hang" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Quản lý tài khoản</a>
+                    <ul class="collapse list-unstyle" id="submenu-khach-hang">
+                        <li><a class=" text-light" href="?act=list-tai-khoan-quan-tri">Tài khoản quản trị</a></li>
+                        <li><a class=" text-light" href="?act=khach-hang">Tài khoản khách hàng</a></li>
+                        <li><a class=" text-light" href="?act=ca-nhan">Tài khoản cá nhân</a></li>
+                    </ul>
+                </li>
+
+
             </ul>
-        </div>
-        <!-- <div class="col">
+
 
         </div>
-    </div> -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

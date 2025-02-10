@@ -6,9 +6,11 @@ require_once '../configs/function.php';
 require_once   './controllers/AdminDanhMucController.php';
 require_once   './controllers/AdminSanPhamController.php';
 require_once   './controllers/AdminDonHangController.php';
+require_once   './controllers/AdminTaiKhoanController.php';
 require_once  './models/SanPham.php';
 require_once  './models/DanhMuc.php';
 require_once  './models/DonHang.php';
+require_once  './models/TaiKhoan.php';
 
 $act = $_GET['act'] ?? '/';
 
@@ -37,4 +39,14 @@ match ($act)
     // Đơn hàng
     'don-hang' =>(new AdminDonHangController())->listDonHang(),
     'xem-don-hang' =>(new AdminDonHangController())->getDetailDonHang(),
+    'form-sua-don-hang' =>(new AdminDonHangController())->formEditDonHang(),
+    'sua-don-hang' =>(new AdminDonHangController())->postEditDonHang(),
+
+    // Tài khoản
+    'list-tai-khoan-quan-tri' =>(new AdminTaiKhoanController())->listQuanTri(),
+    'form-them-tai-khoan-quan-tri' => (new AdminTaiKhoanController())->formAddQuanTri(),
+    'them-tai-khoan-quan-tri'=>(new AdminTaiKhoanController())->postAddQuanTri(),
+    'form-sua-tai-khoan-quan-tri' =>(new AdminTaiKhoanController())->formEditQuanTri(),
+    'sua-tai-khoan-quan-tri' =>(new AdminTaiKhoanController())->postEditQuanTri(),
+    'reset-password'=>(new AdminTaiKhoanController())->resetPass(),
 };

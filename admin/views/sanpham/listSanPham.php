@@ -9,7 +9,7 @@
             <?php
             if (isset($_SESSION['message'])): ?>
                 <div class="alert alert-success">
-                    <?= $_SESSION['message'] ?>
+                    <?= $_SESSION['message'] ?> Xóa thành công
                 </div>
                 <?php unset($_SESSION['message']); ?>
             <?php endif ?>
