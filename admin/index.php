@@ -42,11 +42,22 @@ match ($act)
     'form-sua-don-hang' =>(new AdminDonHangController())->formEditDonHang(),
     'sua-don-hang' =>(new AdminDonHangController())->postEditDonHang(),
 
-    // Tài khoản
+    // Tài khoản quản trị
     'list-tai-khoan-quan-tri' =>(new AdminTaiKhoanController())->listQuanTri(),
     'form-them-tai-khoan-quan-tri' => (new AdminTaiKhoanController())->formAddQuanTri(),
     'them-tai-khoan-quan-tri'=>(new AdminTaiKhoanController())->postAddQuanTri(),
     'form-sua-tai-khoan-quan-tri' =>(new AdminTaiKhoanController())->formEditQuanTri(),
     'sua-tai-khoan-quan-tri' =>(new AdminTaiKhoanController())->postEditQuanTri(),
     'reset-password'=>(new AdminTaiKhoanController())->resetPass(),
+
+    // Tài khoản khách hàng
+    'list-tai-khoan-khach-hang' =>(new AdminTaiKhoanController())->listKhachHang(),
+    'form-sua-tai-khoan-khach-hang' =>(new AdminTaiKhoanController())->formEditKhachHang(),
+    'sua-tai-khoan-khach-hang' =>(new AdminTaiKhoanController())->postEditKhachHang(),
+    'chi-tiet-tai-khoan-khach-hang'=>(new AdminTaiKhoanController())->detailKhachHang(),
+
+    // login
+    'login-admin' => (new AdminTaiKhoanController())->formLogin(),
+    'check-login-admin' => (new AdminTaiKhoanController())->Login(),
+    'logout-admin' => (new AdminTaiKhoanController())->logout(),
 };

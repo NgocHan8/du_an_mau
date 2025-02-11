@@ -62,4 +62,56 @@ class TaiKhoan
         ]);
         return true;
     }
+    public function updateKhachHang($id,$ho_ten,$ngay_sinh,$email,$sdt,$gioi_tinh,$dia_chi)
+    {
+        $sql = 'UPDATE tai_khoan SET
+        ho_ten = :ho_ten,
+        ngay_sinh = :ngay_sinh,
+        email = :email,
+        sdt = :sdt,
+        gioi_tinh = :gioi_tinh,
+        dia_chi = :dia_chi
+        where id = :id';
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([
+            ':ho_ten' => $ho_ten,
+            ':ngay_sinh' => $ngay_sinh,
+            ':email' => $email,
+            ':sdt' => $sdt,
+            ':gioi_tinh' => $gioi_tinh,
+            ':dia_chi' => $dia_chi,
+            ':id' => $id 
+        ]);
+        return true;
+    }
+    public function checkLogin($email,$mat_khau)
+    {
+        $sql = 'SELECT * FROM tai_khoan WHERE email = :email';
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([':email'=>$email]);
+        $user = $stmt->fetch();
+        if($user && password_verify($mat_khau,$user['mat_khau']))
+        {
+            if($user['chuc_vu_id']==1)
+            {
+                if($user['trang_thai']==1)
+                {
+                    return $user['email'];
+                }else{
+                    return 'Tài khoản của bạn bị cấm';
+                }
+            }else{
+                return 'Tài khoản không có quyền đăng nhập';
+            }
+        }else{
+            return 'Sai thông tin mật khẩu hoặc tài khoản';
+        }
+    }
+    public function getTaiKhoanFromEmail($email)
+    {
+        $sql = 'SELECT * FROM tai_khoan WHERE email = :email';
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([':email'=>$email]);
+        return $stmt->fetch();
+    }
 }

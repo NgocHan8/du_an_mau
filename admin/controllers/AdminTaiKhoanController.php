@@ -110,4 +110,111 @@ class AdminTaiKhoanController
             die();
         }
     }
+    public function listKhachHang()
+    {
+        $listKhachHang = $this->modelTaiKhoan->getAllTaiKhoan(2);
+        require_once './views/taikhoan/khachhang/listKhachHang.php';
+    }
+    public function formEditKhachHang()
+    {
+        $id_khach_hang = $_GET['id_khach_hang'];
+        $khachHang = $this->modelTaiKhoan->getDetailTaiKhoan($id_khach_hang);
+        require_once './views/taikhoan/khachhang/editKhachHang.php';
+        deleteSessionError();
+    }
+    public function postEditKhachHang()
+    {
+        if($_SERVER['REQUEST_METHOD']=='POST')
+        {
+            $khach_hang_id = $_POST['khach_hang_id']??'';
+            $ho_ten = $_POST['ho_ten']??'';
+            $ngay_sinh = $_POST['ngay_sinh']??'';
+            $email = $_POST['email']??'';
+            $sdt = $_POST['sdt']??'';
+            $gioi_tinh = $_POST['gioi_tinh']??'';
+            $dia_chi = $_POST['dia_chi']??'';
+            $errors = [];
+            if(empty($ho_ten))
+            {
+                $errors['ho_ten'] = 'Tên không được để trống';
+            }
+            if(empty($ngay_sinh))
+            {
+                $errors['ngay_sinh'] = 'Ngày sinh không được để trống';
+            }
+            if(empty($email))
+            {
+                $errors['email'] = 'Email không được để trống';
+            }
+            
+            if(empty($sdt))
+            {
+                $errors['sdt'] = 'Số điện thoại không được để trống';
+            }
+            
+            if(empty($dia_chi))
+            {
+                $errors['dia_chi'] = 'Vui lòng điền địa chỉ';
+            }
+            $_SESSION['error'] = $errors;
+            if(empty($errors))
+            {
+                $this->modelTaiKhoan->updateKhachHang($khach_hang_id,$ho_ten,$ngay_sinh,$email,$sdt,$gioi_tinh,$dia_chi);
+                header('location:'.BASE_URL_ADMIN.'?act=list-tai-khoan-khach-hang');
+                exit();
+            }
+            else
+            {
+                $_SESSION['flash'] = true;
+                header('location'.BASE_URL_ADMIN.'?act=form-sua-tai-khoan-khach-hang&id_khach_hang'.$khach_hang_id);
+                exit();
+            }
+        }
+    }
+    public function detailKhachHang()
+    {
+        $id_khach_hang = $_GET['id_khach_hang'];
+        $khachHang = $this->modelTaiKhoan->getDetailTaiKhoan($id_khach_hang);
+        $listDonHang = $this->modelDonHang->getDonHangFromKhachHang($id_khach_hang);
+        require_once './views/taikhoan/khachhang/detailKhachHang.php';
+        exit();
+    }
+    public function formLogin()
+    {
+        require_once './views/auth/login.php';
+        deleteSessionError();
+    }
+    public function Login()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Lấy email và password từ form
+            $email = $_POST['email'];
+            $mat_khau = $_POST['mat_khau'];
+
+            // Xử lý kiểm tra thông tin đăng nhập
+            $user = $this->modelTaiKhoan->checkLogin($email,$mat_khau);
+
+            if ($user==$email) {
+                // Nếu đăng nhập thành công, lưu thông tin vào session
+                $_SESSION['user_admin'] = $user;
+
+                header('Location: ' . BASE_URL_ADMIN);
+                exit();
+            } else {
+                // Nếu đăng nhập thất bại, lưu lỗi vào session
+                $_SESSION['error'] = $user;
+
+                $_SESSION['flash'] = true;
+                header('Location: ' . BASE_URL_ADMIN . '?act=login-admin');
+                exit(); 
+            }
+        }
+    }
+    public function logout(){
+        if(isset($_SESSION['user_admin'])){
+            unset($_SESSION['user_admin']);
+            header("location: ". BASE_URL_ADMIN. '?act=login-admin');
+            exit();
+        }
+    }
 }

@@ -25,12 +25,16 @@
                     <a href="#submenu-khach-hang" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Quản lý tài khoản</a>
                     <ul class="collapse list-unstyle" id="submenu-khach-hang">
                         <li><a class=" text-light" href="?act=list-tai-khoan-quan-tri">Tài khoản quản trị</a></li>
-                        <li><a class=" text-light" href="?act=khach-hang">Tài khoản khách hàng</a></li>
-                        <li><a class=" text-light" href="?act=ca-nhan">Tài khoản cá nhân</a></li>
+                        <li><a class=" text-light" href="?act=list-tai-khoan-khach-hang">Tài khoản khách hàng</a></li>
+                        <li><a class=" text-light" href="?act=list-tai-khoan-ca-nhan">Tài khoản cá nhân</a></li>
                     </ul>
                 </li>
 
-
+                <li>
+                    <a class="btn btn-light" href="<?= BASE_URL_ADMIN . '?act=logout-admin' ?>" onclick="return confirm('Đăng xuất tài khoản')">
+                        Đăng xuất
+                    </a>
+                </li>
             </ul>
 
 

@@ -1,5 +1,11 @@
-.row{
+html, body {
     height: 100%;
+    margin: 0;
+}
+.row{
+    height: 100vh;
+    margin: 0;
+
 }
 .navbar-brand{
     color: aliceblue;
@@ -22,6 +28,11 @@ a:hover{
     color: rgb(128, 179, 223);
 
 }
-.col-2{
+.col-2 {
     background: rgb(22, 39, 83);
+    height: 100vh; /* Chiếm toàn bộ chiều cao màn hình */
+    position: fixed; /* Giữ sidebar cố định khi cuộn trang */
+}
+.col {
+    margin-left: 16.6667%; /* Đẩy nội dung chính sang phải, tương ứng với col-2 */
 }

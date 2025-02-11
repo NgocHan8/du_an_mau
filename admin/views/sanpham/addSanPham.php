@@ -1,7 +1,7 @@
 <section>
     <?php require_once './views/Home.php' ?>
 
-    <div class="col mt-5 container">
+    <div class="col mt-5">
         <div class="container ">
             <h1>Thêm sản phẩm</h1>
 
