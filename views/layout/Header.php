@@ -39,7 +39,8 @@
             <a href="#">LIÊN HỆ</a>
         </nav>
         <div class="user-actions">
-            <a href="#">MY ACCOUNT</a>
+            <a href="#">Đăng kí</a>
+            <a href="<?= BASE_URL .'?act=login' ?>">Đăng nhập</a>
             <a href="#" class="cart-link">CART</a>
         </div>
     </header>

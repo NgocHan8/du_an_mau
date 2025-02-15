@@ -16,7 +16,7 @@ $act = $_GET['act'] ?? '/';
 
 match ($act)
 {
-    // '/' => (new AdminDanhMucController)->list(),
+    '/' => (new AdminDanhMucController)->list(),
 
     // Danh Mục
     'danh-muc' => (new AdminDanhMucController())->list(),
@@ -60,4 +60,7 @@ match ($act)
     'login-admin' => (new AdminTaiKhoanController())->formLogin(),
     'check-login-admin' => (new AdminTaiKhoanController())->Login(),
     'logout-admin' => (new AdminTaiKhoanController())->logout(),
+
+    // quản lí tài khoản cá nhân quản trị
+    'form-sua-tai-khoan-ca-nhan' =>(new AdminTaiKhoanController())->formEditCaNhanQuanTri(),
 };

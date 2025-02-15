@@ -217,4 +217,11 @@ class AdminTaiKhoanController
             exit();
         }
     }
+    public function formEditCaNhanQuanTri()
+    {
+        $email = $_SESSION['user_admin'];
+        $thongTin = $this->modelTaiKhoan->getTaiKhoanFromEmail($email);
+        require_once './views/taikhoan/canhan/edit.php';
+        deleteSessionError();
+    }
 }

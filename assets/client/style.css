@@ -214,7 +214,6 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
-    margin-top: 2rem;
 }
 
 .product-card {
@@ -224,9 +223,14 @@
     text-align: center;
 }
 
-/* Product Section */
+
 .products {
     padding: 2rem 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .product-section-title {
@@ -237,8 +241,11 @@
 
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1400px;
 }
 
 .product-item {
@@ -246,30 +253,77 @@
     padding: 1rem;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.product-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 .product-image {
     width: 100%;
-    height: 200px;
+    height: 300px;
     object-fit: cover;
+    border-radius: 4px;
     margin-bottom: 1rem;
 }
 
+.product-item h3 {
+    font-size: 1rem;
+    color: #333;
+    min-height: 2.4em;
+    margin: 0.5rem 0;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
 .product-price {
+    margin-top: auto;
+    padding: 0.5rem 0;
     color: #D62839;
     font-weight: bold;
-    margin: 0.5rem 0;
+    font-size: 1.1rem;
 }
 
 .product-button {
     background: #D62839;
     color: white;
     border: none;
-    padding: 0.5rem 1rem;
+    padding: 0.8rem 1rem;
     border-radius: 4px;
     cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease;
 }
 
+.product-button:hover {
+    background: #c42334;
+}
+
+
+@media (max-width: 1200px) {
+    .product-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 500px) {
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+}
 /* Footer */
 .footer {
     background: #B2E6F0;
@@ -331,10 +385,16 @@
 
 .footer-menu a {
     text-decoration: none;
-    color: #ddd;
+    color: #333;  /* Màu mặc định */
     font-size: 14px;
     transition: color 0.3s;
 }
+
+.footer-menu .text-primary,
+.footer-menu a.text-primary {
+    color: #007bff !important;  /* Màu xanh bootstrap */
+}
+
 
 .footer-menu a:hover {
     color: #ffcc00;
