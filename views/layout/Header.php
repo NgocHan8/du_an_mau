@@ -25,8 +25,9 @@
         </div>
         </div>
         <nav class="nav-menu">
+            <a href="<?= BASE_URL ?>"><b>Home</b></a>
             <div class="dropdown">
-                <a href="#">SẢN PHẨM</a>
+                <a href="#"><b>Sản Phẩm</b></a>
                 <div class="dropdown-content">
                     <a href="#">Dây chuyền</a>
                     <a href="#">Lắc tay</a>
@@ -34,18 +35,20 @@
                     <a href="#">Khuyên tai</a>
                 </div>
             </div>
-            <a href="#">TIN TỨC</a>
-            <a href="#">GIỚI THIỆU</a>
-            <a href="#">LIÊN HỆ</a>
+            <a href="#"><b>Giới thiệu</b></a>
+            <a href="#"><b>Liên hệ</b></a>
         </nav>
         <div class="user-actions">
-            <a href="#">Đăng kí</a>
-            <a href="<?= BASE_URL .'?act=login' ?>">Đăng nhập</a>
-            <a href="#" class="cart-link">CART</a>
+            <?php if (isset($_SESSION['user_client'])):?>
+                <a href="<?= BASE_URL.'?act=my-acount'?>"><img width="20" height="20" src="https://img.icons8.com/pulsar-line/48/guest-male.png" alt="guest-male"/></a>
+                <a href="<?= BASE_URL . '?act=logout' ?>">Đăng xuất</a>
+            <?php else: ?>
+                <a href="#">Đăng kí</a>
+                <a href="<?= BASE_URL . '?act=login' ?>">Đăng nhập</a>
+            <?php endif ?>
+            <a href="#" class="cart-link"><img width="24" height="24" src="https://img.icons8.com/material-rounded/24/shopping-cart.png" alt="shopping-cart" /></a>
         </div>
+
     </header>
 
 
-    <div class="banner">
-        <img src="./assets/uploads/banner.jpg" width="100%" alt="Hộp quà hoa hồng đỏ">
-    </div>

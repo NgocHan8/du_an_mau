@@ -1,4 +1,4 @@
-<footer class="footer">
+=<footer class="footer">
     <div class="footer-content">
         <div class="footer-section">
             <h3>THÔNG TIN LIÊN HỆ</h3>
@@ -28,7 +28,7 @@
         <div class="footer-menu">
             <h3>CHÍNH SÁCH</h3>
             <ul>
-                <li><a href="#" class="text-primary">Tin tức, khuyến mãi</a></li>
+                <li><a href="#">Tin tức, khuyến mãi</a></li>
                 <li><a href="#">Khách hàng thân thiết</a></li>
                 <li><a href="#">Chính sách đổi trả</a></li>
                 <li><a href="#">Chính sách vận chuyển</a></li>

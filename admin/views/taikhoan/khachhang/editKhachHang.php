@@ -16,7 +16,7 @@
                 </div>
                 <div class="form-group mb-3">
                     <label class="form-label">Ngày sinh</label>
-                    <input type="text" class="form-control" name="ngay_sinh" id="ngay_sinh" value="<?= $khachHang['ngay_sinh'] ?>">
+                    <input type="date" class="form-control" name="ngay_sinh" id="ngay_sinh" value="<?= $khachHang['ngay_sinh'] ?>">
                     <?php if (isset($_SESSION['error']['ngay_sinh'])) { ?>
                         <p class="text-danger"><?= $_SESSION['error']['ngay_sinh'] ?></p>
                     <?php } ?>

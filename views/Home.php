@@ -1,4 +1,5 @@
 <?php require_once 'layout/Header.php' ?>
+<?php require_once 'layout/Banner.php' ?>
 <section class="products">
     <h2 class="product-section-title">TOP SẢN PHẨM BÁN CHẠY</h2>
     <?php

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -99,13 +100,14 @@
             .container {
                 max-width: 90vw !important;
             }
-            
+
             .login-reg-form-wrap {
                 padding: 20px;
             }
         }
     </style>
 </head>
+
 <body>
     <div class="login-register-wrapper section-padding">
         <div class="container" style="max-width: 40vw">
@@ -114,22 +116,28 @@
                     <div class="col-lg-12">
                         <div class="login-reg-form-wrap">
                             <h5 class="text-center">Đăng nhập</h5>
-                            <?php if (isset($_SESSION['error'])) { ?>
+                            <!-- <?php if (isset($_SESSION['error'])) { ?>
                                 <p class="text-danger login-box-msg text-center"><?= $_SESSION['error'] ?></p>
                             <?php  } else { ?>
                                 <p class="login-box-msg text-center">Vui lòng đăng nhập</p>
+                            <?php } ?> -->
+                            <?php if (isset($_SESSION['error'])) { ?>
+                                <p class="text-danger login-box-msg text-center">
+                                    <?= is_array($_SESSION['error']) ? implode('<br>', $_SESSION['error']) : $_SESSION['error']; ?>
+                                </p>
                             <?php } ?>
+
                             <form action="<?= BASE_URL . '?act=check-login' ?>" method="post">
                                 <div class="mb-3">
                                     <label for="email" class="form-label">Email</label>
                                     <input type="text" class="form-control" id="email" name="email">
                                 </div>
-                                
+
                                 <div class="mb-3">
                                     <label for="password" class="form-label">Password</label>
                                     <input type="password" class="form-control" id="password" name="mat_khau">
                                 </div>
-                                
+
                                 <div class="single-input-item">
                                     <div class="login-reg-form-meta d-flex align-items-center justify-content-between">
                                         <a href="#" class="forget-pwd">Quên Mật Khẩu</a>
@@ -148,4 +156,5 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

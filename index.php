@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once './configs/env.php';
 require_once './configs/function.php';
 // require_once './configs/helper.php';
@@ -9,7 +10,6 @@ require_once './models/TaiKhoan.php';
 // Điều hướng
 
 $act = $_GET['act'] ?? '/';
-
 match ($act)
 {
     '/' => (new HomeController)->home(),
@@ -19,5 +19,7 @@ match ($act)
 
     // login logout
     'login' =>(new HomeController())->formLogin(),
-    'check-login' =>(new HomeController())->postLogin(),
+    'check-login' =>(new HomeController())->Login(),
+    'logout'=>(new HomeController())->Logout(),
+    'my-acount'=>(new HomeController())->myAcount(),
 };

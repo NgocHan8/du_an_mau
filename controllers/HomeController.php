@@ -13,7 +13,7 @@ class HomeController
     public function home()
     {
         $listSanPham = $this->modelSanPham->getAllSanPham();
-        require_once 'views/Home.php';
+        require_once './views/Home.php';
 
     }
     public function formLogin()
@@ -21,7 +21,7 @@ class HomeController
         require_once './views/auth/formLogin.php';
         deleteSessionError();
     }
-    public function postLogin()
+    public function Login()
     {
         if($_SERVER['REQUEST_METHOD']=='POST')
         {
@@ -33,16 +33,38 @@ class HomeController
             {
                 // Nếu đăng nhập thành công, lưu thông tin vào session
                 $_SESSION['user_client'] = $user;
-                header('location'.BASE_URL);
+                header('location:'.BASE_URL);
                 exit();
             }else
             {
                 // Nếu đăng nhập thất bại, lưu lỗi vào session
-                $_SESSION['error'] = $user;
+                $_SESSION['error'] = is_array($user) ? implode(' ', $user) : $user;
                 $_SESSION['flash'] = true;
-                header('location'.BASE_URL.'?act=login');
+                header('location:'.BASE_URL.'?act=login');
                 exit();
             }
+        }
+    }
+    public function myAcount()
+    {
+        $email = $_SESSION['user_client'];
+        $user = $this->modelTaiKhoan->getDetailTaiKhoanKhachHang($email);
+        
+        if ($user) {
+            require_once './views/myAcount.php';  // Fixed view name
+            
+        } else {
+            header('Location: '.BASE_URL);
+            exit();
+        }
+    }
+    public function Logout()
+    {
+        if(isset($_SESSION['user_client']))
+        {
+            unset($_SESSION['user_client']);
+            header('location:'.BASE_URL);
+            exit();
         }
     }
 }
