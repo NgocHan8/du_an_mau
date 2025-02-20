@@ -8,12 +8,12 @@ class AdminSanPhamController
         $this->modelSanPham = new SanPham();
         $this->modelDanhMuc = new DanhMuc();
     }
+   
     public function listSanPham()
     {
         $listSanPham = $this->modelSanPham->getAllSanPham();
-        if (empty($listSanPham)) {
-            $_SESSION['message'] = 'Không có sản phẩm nào trong danh sách.';
-        }
+        
+        
         require_once './views/sanpham/listSanPham.php';
     }
     public function showSanPham()
@@ -47,11 +47,6 @@ class AdminSanPhamController
             $mo_ta = $_POST['mo_ta'] ?? '';
             $img = $_FILES['img'] ?? null;
 
-            //mang hinh anh
-
-            $img_array = $_FILES['img_array'];
-
-
             $errors = [];
             if (empty($ten_san_pham)) {
                 $errors['ten_san_pham'] = 'Tên sản phẩm không để trống';
@@ -77,20 +72,7 @@ class AdminSanPhamController
                 $file_thumb = uploadFile($img, './assets/uploads/');
 
                 $san_pham_id = $this->modelSanPham->insertSanPham($ten_san_pham, $price, $file_thumb, $quantity, $danh_muc_id, $mo_ta);
-                // xu lis them alum anh img_array
-                if (!empty($img_array['name'])) {
-                    foreach ($img_array['name'] as $key => $value) {
-                        $file = [
-                            'name' => $img_array['name'][$key],
-                            'type' => $img_array['type'][$key],
-                            'tmp_name' => $img_array['tmp_name'][$key],
-                            'error' => $img_array['error'][$key],
-                            'size' => $img_array['size'][$key]
-                        ];
-                        $link_hinh_anh = uploadFile($file, '../assets/upload/');
-                        $this->modelSanPham->insertAlbumAnhSanPham($san_pham_id, $link_hinh_anh);
-                    }
-                }
+
                 header('location: ' . BASE_URL_ADMIN . '?act=san-pham');
                 exit;
             } else {
@@ -105,7 +87,7 @@ class AdminSanPhamController
     {
         $id = $_GET['id_san_pham'];
         $sanPham = $this->modelSanPham->getDetailSanPham($id);
-        $listAnh = $this->modelSanPham->getListAnhSanPham($id);
+        // $listAnh = $this->modelSanPham->getListAnhSanPham($id);
         $listDanhMuc = $this->modelDanhMuc->getAllDanhMuc();
         if ($sanPham) {
             require_once './views/sanpham/editSanPham.php';
@@ -139,9 +121,7 @@ class AdminSanPhamController
             if (empty($price)) {
                 $errors['price'] = 'Giá sản phẩm không được dderr trống';
             }
-            // if ($img['error'] !== 0) {
-            //     $errors['img'] = 'Vui lòng chọn ảnh sản phẩm';
-            // }
+            
 
             if (empty($quantity)) {
                 $errors['quantity'] = 'Số lượng sản phẩm không được dderr trống';
@@ -255,4 +235,5 @@ class AdminSanPhamController
         header('location:' . BASE_URL_ADMIN . '?act=san-pham');
         exit();
     }
+
 }

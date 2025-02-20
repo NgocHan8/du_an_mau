@@ -115,7 +115,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="login-reg-form-wrap">
-                            <h5 class="text-center">Đăng nhập</h5>
+                            <h5 class="text-center">Đăng ký</h5>
                             <!-- <?php if (isset($_SESSION['error'])) { ?>
                                 <p class="text-danger login-box-msg text-center"><?= $_SESSION['error'] ?></p>
                             <?php  } else { ?>
@@ -127,26 +127,62 @@
                                 </p>
                             <?php } ?>
 
-                            <form action="<?= BASE_URL . '?act=check-login' ?>" method="post">
+                            <form action="<?= BASE_URL . '?act=check-register' ?>" method="post">
+                                <div class="mb-3">
+                                    <label for="ho_ten" class="form-label">Họ tên</label>
+                                    <input type="text" class="form-control" id="ho_ten" name="ho_ten">
+                                    <?php if (isset($_SESSION['error']['ho_ten'])) { ?>
+                                        <p class="text-danger"><?= $_SESSION['error']['ho_ten'] ?></p>
+                                    <?php } ?>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="ngay_sinh" class="form-label">Ngày sinh</label>
+                                    <input type="date" class="form-control" id="ngay_sinh" name="ngay_sinh">
+                                    <?php if (isset($_SESSION['error']['ngay_sinh'])) { ?>
+                                        <p class="text-danger"><?= $_SESSION['error']['ngay_sinh'] ?></p>
+                                    <?php } ?>
+                                </div>
+
                                 <div class="mb-3">
                                     <label for="email" class="form-label">Email</label>
-                                    <input type="text" class="form-control" id="email" name="email">
+                                    <input type="email" class="form-control" id="email" name="email">
+                                    <?php if (isset($_SESSION['error']['email'])) { ?>
+                                        <p class="text-danger"><?= $_SESSION['error']['email'] ?></p>
+                                    <?php } ?>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="sdt" class="form-label">Số điện thoại</label>
+                                    <input type="text" class="form-control" id="sdt" name="sdt">
+                                    <?php if (isset($_SESSION['error']['sdt'])) { ?>
+                                        <p class="text-danger"><?= $_SESSION['error']['sdt'] ?></p>
+                                    <?php } ?>
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="password" class="form-label">Password</label>
-                                    <input type="password" class="form-control" id="password" name="mat_khau">
+                                    <label for="gioi_tinh" class="form-label">Giới tính</label>
+                                    <label>
+                                        <input type="radio" name="gioi_tinh" value="Nam"> Nam
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="gioi_tinh" value="Nữ"> Nữ
+                                    </label>
+                                    <?php if (isset($_SESSION['error']['gioi_tinh'])) { ?>
+                                        <p class="text-danger"><?= $_SESSION['error']['gioi_tinh'] ?></p>
+                                    <?php } ?>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="mat_khau" class="form-label">Mật khẩu</label>
+                                    <input type="text" class="form-control" id="mat_khau" name="mat_khau">
+                                    <?php if (isset($_SESSION['error']['mat_khau'])) { ?>
+                                        <p class="text-danger"><?= $_SESSION['error']['mat_khau'] ?></p>
+                                    <?php } ?>
                                 </div>
 
                                 <div class="single-input-item">
-                                    <div class="login-reg-form-meta d-flex align-items-center justify-content-between">
-                                        <a href="#" class="forget-pwd">Quên Mật Khẩu</a>
-                                    </div>
+                                    <button class="btn btn-sqr">Đăng ký</button>
                                 </div>
-                                <div class="single-input-item">
-                                    <button class="btn btn-sqr">Đăng nhập</button>
-                                </div>
-                                <p>Bạn chưa có tài khoản?<a href="<?=BASE_URL.'?act=register'?>">Đăng ký</a></p>
                             </form>
                         </div>
                     </div>

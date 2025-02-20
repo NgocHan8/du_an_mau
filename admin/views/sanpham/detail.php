@@ -24,13 +24,13 @@
                 <div class="col-12 col-sm-6">
                     <h3 class="my-3">Tên sản phẩm: <?= $sanPham['ten_san_pham'] ?></h3>
                     <hr>
-                    <h4 class="mt-3">Giá tiền: <small><?= $sanPham['price'] ?></small></h4>
+                    <h4 class="mt-3">Giá tiền: <small><?= $sanPham['price'] ?> đ</small></h4>
                     <h4 class="mt-3">Số lượng: <small><?= $sanPham['quantity'] ?></small></h4>
                     <h4 class="mt-3">Danh mục: <small><?= $sanPham['ten_danh_muc'] ?></small></h4>
                     <h4 class="mt-3">Mô tả: <small><?= $sanPham['mo_ta'] ?></small></h4>
                 </div>
             </div>
-            
+                    
         </div>
     </div>
     </div>

@@ -6,6 +6,11 @@ class AdminDonHangController
     {
         $this->modelDonHang = new DonHang();
     }
+    public function baoCao() {
+        $listDonHang = $this->modelDonHang->getAllDonHang();
+        require_once  './views/baoCao.php';
+
+    }
     public function listDonHang()
     {
         $listDonHang = $this->modelDonHang->getAllDonHang();

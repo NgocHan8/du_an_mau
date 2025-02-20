@@ -6,7 +6,7 @@ class AdminDanhMucController
     {
         $this->modelDanhMuc = new DanhMuc();
     }
-    public function baocao() {}
+
     public function list()
     {
         $listDanhMuc = $this->modelDanhMuc->getAllDanhMuc();

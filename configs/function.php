@@ -62,3 +62,24 @@ function connectDB() {
     }
     return null;
  }
+ function formatProductDescription($description) {
+    // Tạo một mảng các đoạn thông tin quan trọng cần tách
+    $keyPhrases = [
+        'Thông tin sản phẩm',
+        'Chất liệu:',
+        'Thiết kế',
+        'Hướng dẫn bảo quản',
+        'Lưu ý khi sử dụng:',
+        'Tránh va đập',
+        'Chế độ bảo hành',
+        'Tặng kèm hộp',
+        'Bảo hành trọn đời'
+    ];
+    
+    // Thay thế những từ khóa này bằng version xuống dòng
+    foreach ($keyPhrases as $phrase) {
+        $description = str_replace($phrase, '<br><strong>' . $phrase . '</strong>', $description);
+    }
+    
+    return $description;
+}

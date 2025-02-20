@@ -7,6 +7,8 @@ require_once './controllers/HomeController.php';
 
 require_once './models/SanPham.php';
 require_once './models/TaiKhoan.php';
+require_once './models/GioHang.php';
+require_once './models/DonHang.php';
 // Điều hướng
 
 $act = $_GET['act'] ?? '/';
@@ -22,4 +24,30 @@ match ($act)
     'check-login' =>(new HomeController())->Login(),
     'logout'=>(new HomeController())->Logout(),
     'my-acount'=>(new HomeController())->myAcount(),
+    'register'=>(new HomeController())->formRegister(),
+    'check-register' =>(new HomeController())->Register(),
+
+    'search'=>(new HomeController())->search(),
+
+    'list-san-pham'=>(new HomeController())->listSanPham(),
+    'chi-tiet-san-pham'=>(new HomeController())->detailSanPham(),
+
+    'gio-hang'=>(new HomeController())->gioHang(),
+    'them-gio-hang'=>(new HomeController())->addGioHang(),
+    'xoa-san-pham'=>(new HomeController())->xoaSanPham(),
+    'cap-nhat-so-luong'=>(new HomeController())->capNhatSoLuong(),
+
+    'thanh-toan'=>(new HomeController())->thanhToan(),
+    'xu-ly-thanh-toan'=>(new HomeController())->postThanhToan(),
+    'lich-su-mua-hang'=>(new HomeController())->lichSuMuaHang(),
+    'chi-tiet-don-hang'=>(new HomeController())->chiTietDonHang(),
+    'huy-don-hang'=>(new HomeController())->huyDonHang(),
+
+
+    
+
+
+
+
+    
 };

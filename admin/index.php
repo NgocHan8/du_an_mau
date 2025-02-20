@@ -7,16 +7,18 @@ require_once   './controllers/AdminDanhMucController.php';
 require_once   './controllers/AdminSanPhamController.php';
 require_once   './controllers/AdminDonHangController.php';
 require_once   './controllers/AdminTaiKhoanController.php';
+require_once   './controllers/AdminBinhLuanController.php';
 require_once  './models/SanPham.php';
 require_once  './models/DanhMuc.php';
 require_once  './models/DonHang.php';
+require_once  './models/BinhLuan.php';
 require_once  './models/TaiKhoan.php';
 
 $act = $_GET['act'] ?? '/';
 
 match ($act)
 {
-    '/' => (new AdminDanhMucController)->list(),
+    '/' => (new AdminDonHangController)->baoCao(),
 
     // Danh Mục
     'danh-muc' => (new AdminDanhMucController())->list(),
@@ -36,6 +38,10 @@ match ($act)
     'xoa-san-pham'=>(new AdminSanPhamController())->deleteSanPham(),
     // 'sua-album-anh-san-pham'=>(new AdminSanPhamController())->postEditAnhSanPham(),
     
+    // bình luận
+    'binh-luan'=>(new AdminBinhLuanController())->listBinhLuan(),
+    'update-trang-thai-binh-luan'=>(new AdminBinhLuanController())->updateTrangThaiBinhLuan(),
+
     // Đơn hàng
     'don-hang' =>(new AdminDonHangController())->listDonHang(),
     'xem-don-hang' =>(new AdminDonHangController())->getDetailDonHang(),

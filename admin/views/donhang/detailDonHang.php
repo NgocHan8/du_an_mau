@@ -91,11 +91,11 @@
                             </tr>
                             <tr>
                                 <th>Phí vận chuyển:</th>
-                                <td>20.000 đ</td>
+                                <td>30.000 đ</td>
                             </tr>
                             <tr>
                                 <th><strong>Tổng tiền:</strong></th>
-                                <td><strong><?= number_format($tong_tien + 20000, 0, ',', '.') ?> đ</strong></td>
+                                <td><strong><?= number_format($tong_tien + 30000, 0, ',', '.') ?> đ</strong></td>
                             </tr>
                         </table>
                         <p class="text-muted">Ngày đặt hàng: <?= date('d/m/Y', strtotime($donHang['ngay_dat'])) ?></p>

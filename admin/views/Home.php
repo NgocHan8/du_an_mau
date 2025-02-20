@@ -17,9 +17,10 @@
                 <a class="navbar-brand" href="#">ADMIN</a>
             </nav>
             <ul class="header">
-                <li><a href="/">Dashboard</a></li>
+                <li><a href="<?= BASE_URL_ADMIN?>">Dashboard</a></li>
                 <li><a href="?act=danh-muc">Quản lý danh mục</a></li>
                 <li><a href="?act=san-pham">Quản lý sản phẩm</a></li>
+                <li><a href="?act=binh-luan">Quản lý bình luận</a></li>
                 <li><a href="?act=don-hang">Quản lý đơn hàng</a></li>
                 <li>
                     <a href="#submenu-khach-hang" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Quản lý tài khoản</a>
