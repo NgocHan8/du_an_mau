@@ -92,7 +92,7 @@
                     <p class="login-box-msg">Vui lòng đăng nhập</p>
                 <?php } ?>
                 
-                <form action="<?= BASE_URL_ADMIN . '?act=check-login-admin' ?>" method="post">
+                <form action="<?= BASE_URL_ADMIN . '?act=check-login-admin' ?>" method="post" enctype="multipart/form-data">
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
                         <input type="text" class="form-control" id="email" name="email">
@@ -100,7 +100,7 @@
                     
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password" name="mat_khau">
+                        <input type="password" class="form-control" id="mat_khau" name="mat_khau">
                     </div>
                     
                     <div class="mt-4">

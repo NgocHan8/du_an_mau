@@ -8,6 +8,8 @@ class AdminDonHangController
     }
     public function baoCao() {
         $listDonHang = $this->modelDonHang->getAllDonHang();
+        $thongKe = $this->modelDonHang->getThongKeHomNay();
+        $thongKeThang = $this->modelDonHang->getThongKeThang();
         require_once  './views/baoCao.php';
 
     }

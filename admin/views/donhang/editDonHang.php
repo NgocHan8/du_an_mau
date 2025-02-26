@@ -1,6 +1,16 @@
 <section>
     <?php require_once './views/Home.php'; ?>
-    <div class="col mt-5">
+    <div class="col">
+            <nav class="navbar bg-body-tertiary ">
+                <div class="">
+                    <a class="navbar-brand text-dark" href="<?= BASE_URL ?>">Website</a>
+                </div>
+                <div class="icon me-5">
+                    <a href="<?= BASE_URL_ADMIN . '?act=logout-admin' ?>" onclick="return confirm('Bạn muốn đăng xuất?')">
+                        <img width="25" height="25" src="https://img.icons8.com/pixels/32/exit.png" alt="exit" />
+                    </a>
+                </div>
+            </nav>
         <div class="container">
             <h3>Sửa thông tin đơn hàng <?= $donHang['ma_don_hang']; ?> </h3>
         </div>
@@ -57,8 +67,12 @@
                     <?php endforeach; ?>
                 </select>
             </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-
+            <div class="row">
+                <div class="col-sm-10">
+        <button type="submit" class="btn btn-primary">Submit</button></div>
+        <div class="col-sm-1">
+        <a href="<?= BASE_URL_ADMIN . '?act=don-hang' ?>" class="btn btn-secondary ">Back</a></div>
+        </div>
     </div>
 
 </section>

@@ -17,7 +17,7 @@
                 <a class="navbar-brand" href="#">ADMIN</a>
             </nav>
             <ul class="header">
-                <li><a href="<?= BASE_URL_ADMIN?>">Dashboard</a></li>
+                <li><a href="<?= BASE_URL_ADMIN ?>">Dashboard</a></li>
                 <li><a href="?act=danh-muc">Quản lý danh mục</a></li>
                 <li><a href="?act=san-pham">Quản lý sản phẩm</a></li>
                 <li><a href="?act=binh-luan">Quản lý bình luận</a></li>
@@ -27,19 +27,13 @@
                     <ul class="collapse list-unstyle" id="submenu-khach-hang">
                         <li><a class=" text-light" href="?act=list-tai-khoan-quan-tri">Tài khoản quản trị</a></li>
                         <li><a class=" text-light" href="?act=list-tai-khoan-khach-hang">Tài khoản khách hàng</a></li>
-                        <li><a class=" text-light" href="?act=list-tai-khoan-ca-nhan">Tài khoản cá nhân</a></li>
                     </ul>
                 </li>
-
-                <li>
-                    <a class="btn btn-light" href="<?= BASE_URL_ADMIN . '?act=logout-admin' ?>" onclick="return confirm('Đăng xuất tài khoản')">
-                        Đăng xuất
-                    </a>
-                </li>
+                
             </ul>
-
-
+            
         </div>
+        
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 

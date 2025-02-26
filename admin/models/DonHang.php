@@ -9,7 +9,8 @@ class DonHang
     public function getAllDonHang()
     {
         $sql = 'SELECT don_hang.*, trang_thai_don_hang.ten_trang_thai FROM don_hang
-        INNER JOIN trang_thai_don_hang ON don_hang.trang_thai_id = trang_thai_don_hang.id';
+        INNER JOIN trang_thai_don_hang ON don_hang.trang_thai_id = trang_thai_don_hang.id
+        ORDER BY don_hang.id DESC';
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll();
@@ -80,4 +81,49 @@ class DonHang
         $stmt->execute([':id'=>$id]);
         return $stmt->fetchAll();
     }
+    public function getThongKeHomNay() {
+        $sql = "SELECT COALESCE(SUM(tong_tien), 0) as doanh_thu FROM don_hang WHERE DATE(ngay_dat) = CURDATE()";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+        $donHang = $stmt->fetch();
+    
+        // Lấy tổng sản phẩm đã bán hôm nay
+        $sql2 = "SELECT COALESCE(SUM(so_luong), 0) AS tong_san_pham
+                 FROM chi_tiet_don_hang
+                 INNER JOIN don_hang ON chi_tiet_don_hang.don_hang_id = don_hang.id
+                 WHERE DATE(don_hang.ngay_dat) = CURDATE()";
+        $stmt2 = $this->conn->prepare($sql2);
+        $stmt2->execute();
+        $sanPham = $stmt2->fetch();
+    
+        // Lấy tổng đơn hàng hôm nay
+        $sql3 = "SELECT COUNT(id) AS tong_don_hang FROM don_hang WHERE DATE(ngay_dat) = CURDATE()";
+        $stmt3 = $this->conn->prepare($sql3);
+        $stmt3->execute();
+        $donHangCount = $stmt3->fetch();
+    
+        return [
+            'doanh_thu' => $donHang['doanh_thu'] ?? 0,
+            'tong_don_hang' => $donHangCount['tong_don_hang'] ?? 0,
+            'tong_san_pham' => $sanPham['tong_san_pham'] ?? 0
+        ];
+    }
+
+    public function getThongKeThang() {
+        $sql = "SELECT 
+                    MONTH(ngay_dat) AS thang, 
+                    YEAR(ngay_dat) AS nam, 
+                    COALESCE(SUM(tong_tien),0) AS doanh_thu 
+                FROM don_hang 
+                WHERE ngay_dat >= DATE_SUB(CURDATE(),INTERVAL 6 MONTH) 
+                GROUP BY nam , thang
+                ORDER BY nam ASC, thang ASC";
+    
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    
+    
+    
 }

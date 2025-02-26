@@ -24,7 +24,8 @@ class TaiKhoan
             }else{
                 return 'Tài khoản của bạn không có quyền đăng nhập';
             }
-        }elseif(($user && $user['mat_khau'] === $mat_khau))
+        }
+        elseif(($user && $user['mat_khau'] === $mat_khau))
         {
             if($user['chuc_vu_id']==2){
                 if($user['trang_thai']==1){
@@ -77,5 +78,21 @@ class TaiKhoan
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([':email'=>$email]);
         return $stmt->fetch();
+    }
+    public function checkEmailPhone($email,$sdt)
+    {
+        $sql = 'SELECT * FROM tai_khoan WHERE email =:email AND sdt = :sdt';
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([':email'=>$email, 'sdt'=>$sdt]);
+        return $stmt->fetch();
+    }
+    public function updatePass($email,$new_password)
+    {
+        $mat_khau = password_hash($new_password, PASSWORD_DEFAULT);
+        // echo "Mật khẩu đã hash: " . $mat_khau; 
+        $sql = 'UPDATE tai_khoan SET mat_khau = :mat_khau WHERE email = :email';
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([':email'=>$email, 'mat_khau'=>$mat_khau]);
+        return true;
     }
 }

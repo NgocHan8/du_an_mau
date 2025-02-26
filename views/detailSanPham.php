@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chi Tiết Sản Phẩm - Vòng Cổ Kim Cương Ánh Sao</title>
+    <title>Chi Tiết Sản Phẩm</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/client/style.css">
+    <link rel="stylesheet" href="./assets/client/style.css">
     <style>
         body {
             font-family: 'Playfair Display', serif;
@@ -129,6 +129,41 @@
         .rounded-custom {
             border-radius: 8px;
         }
+
+        .cart-item-actions {
+            display: flex;
+            align-items: center;
+            margin-left: auto;
+        }
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            margin-right: 15px;
+        }
+
+        .quantity-control button {
+            border: none;
+            background-color: #31708f;
+            color: white;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .quantity-control input {
+            width: 40px;
+            text-align: center;
+            border: 1px solid #ddd;
+            font-size: 16px;
+            margin: 0 5px;
+            padding: 0 5px;
+            border-radius: 3px;
+        }
     </style>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -143,8 +178,8 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-0 small">
                     <li class="breadcrumb-item"><a href="<?= BASE_URL ?>" class="text-decoration-none text-muted">Trang Chủ</a></li>
-                    <li class="breadcrumb-item"><a href="#" class="text-decoration-none text-muted">Sản Phẩm</a></li>
-                    <li class="breadcrumb-item"><a href="#" class="text-decoration-none text-muted"><?= $danhMuc['ten_danh_muc'] ?></a></li>
+                    <li class="breadcrumb-item"><a href="<?= BASE_URL . '?act=list-danh-muc' ?>" class="text-decoration-none text-muted">Sản Phẩm</a></li>
+                    <li class="breadcrumb-item"><a href="<?= BASE_URL . '?act=' . $danhMuc['ten_danh_muc'] ?>" class="text-decoration-none text-muted"><?= $danhMuc['ten_danh_muc'] ?></a></li>
                 </ol>
             </nav>
         </div>
@@ -171,16 +206,7 @@
                 <div class="card border-0 shadow-sm h-100">
                     <div class="card-body d-flex flex-column p-4">
                         <h1 class="h2 mb-2"><?= $sanPham['ten_san_pham'] ?></h1>
-                        <div class="d-flex align-items-center mb-3">
-                            <div class="product-rating me-2">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                                <span class="ms-1 text-muted"></span>
-                            </div>
-                        </div>
+
 
                         <div class="mb-4">
                             <h3 class="h2 text-gold mb-0"><?= number_format($sanPham['price'], 0, ',', '.') ?> đ</h3>
@@ -205,10 +231,12 @@
                                     <div class="col mb-2">
                                         <div class="quantity">
                                             <input type="hidden" name="san_pham_id" value="<?= $sanPham['id']; ?>">
-                                            <div class="btn-group me-2" role="group" aria-label="Second group">
-                                                <button type="button" class="btn btn-lighter rounded-start-pill">-</button>
-                                                <input  type="number" class="btn btn-outline-secondary" value="1" name="so_luong" min="1">
-                                                <button type="button" class="btn btn-lighter rounded-end-pill">+</button>
+                                            <div class="cart-item-actions">
+                                                <div class="quantity-control">
+                                                    <button type="button" onclick="decreaseQuantity(this)" class="decrease-btn"><i class="fas fa-minus"></i></button>
+                                                    <input type="text" value="1" name="so_luong" min="1" readonly class="quantity-input">
+                                                    <button type="button" onclick="increaseQuantity(this)" class="increase-btn"><i class="fas fa-plus"></i></button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -226,7 +254,22 @@
             </div>
         </div>
     </section>
+    <script>
+    // Hàm tăng số lượng
+    function increaseQuantity(button) {
+        let input = button.previousElementSibling;
+        input.value = parseInt(input.value) + 1;
+    }
 
+    // Hàm giảm số lượng
+    function decreaseQuantity(button) {
+        let input = button.nextElementSibling;
+        if (parseInt(input.value) > 1) {
+            input.value = parseInt(input.value) - 1;
+        }
+    }
+
+</script>
     <!-- Product Details Tab -->
     <section class="container py-5">
         <div class="card border-0 shadow-sm">
@@ -285,7 +328,33 @@
 
             </div>
         </div>
+        <section class="products">
+            <h4 class="mt-3">Sản phẩm cùng loại</h4>
+            <?php
+            if (!isset($listSanPhamCungDanhMuc) || !is_array($listSanPhamCungDanhMuc)) {
+                $listSanPhamCungDanhMuc = []; // Gán giá trị mặc định là mảng rỗng
+            }
+            if (!empty($listSanPhamCungDanhMuc)): ?>
+                <div class="product-grid mt-3">
+                    <?php foreach ($listSanPhamCungDanhMuc as $sanPham): ?>
+                        <div class="product-item">
+                            <a href="<?= BASE_URL . '?act=chi-tiet-san-pham&id_san_pham=' . $sanPham['id'] ?>">
+                                <img src="<?= BASE_URL . $sanPham['img'] ?>" width="200px" height="200px" alt="Product" class="product-image" />
+                            </a>
+                            <h6><?= htmlspecialchars($sanPham['ten_san_pham']) ?></h6>
+                            <p class="product-price">
+                                <span class="new-price"><?= number_format($sanPham['price'], 0, ',', '.') ?> đ</span>
+                            </p>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            <?php else: ?>
+                <p>Không có sản phẩm nào để hiển thị.</p>
+            <?php endif; ?>
+
+        </section>
     </section>
+
     <?php require_once 'layout/Footer.php'; ?>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 

@@ -31,16 +31,18 @@
         <nav class="nav-menu">
             <a href="<?= BASE_URL ?>"><b>Home</b></a>
             <div class="dropdown">
+                
                 <a href="<?= BASE_URL .'?act=list-san-pham' ?>"><b>Sản Phẩm</b></a>
                 <div class="dropdown-content">
-                    <a href="#">Dây chuyền</a>
-                    <a href="#">Lắc tay</a>
-                    <a href="#">Lắc chân</a>
-                    <a href="#">Khuyên tai</a>
+                    <a href="<?= BASE_URL .'?act=day-chuyen' ?>">Dây chuyền</a>
+                    <a href="<?= BASE_URL .'?act=lac-tay' ?>">Lắc tay</a>
+                    <a href="<?= BASE_URL .'?act=lac-chan' ?>">Lắc chân</a>
+                    <a href="<?= BASE_URL .'?act=bong-tai' ?>">Bông tai</a>
+                    <a href="<?= BASE_URL .'?act=nhan' ?>">Nhẫn</a>
                 </div>
             </div>
-            <a href="#"><b>Giới thiệu</b></a>
-            <a href="#"><b>Liên hệ</b></a>
+            <a href="<?= BASE_URL .'?act=gioi-thieu' ?>"><b>Giới thiệu</b></a>
+            <a href="<?= BASE_URL .'?act=lien-he' ?>"><b>Liên hệ</b></a>
         </nav>
         <div class="user-actions">
             <?php if (isset($_SESSION['user_client'])): ?>

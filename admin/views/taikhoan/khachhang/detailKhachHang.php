@@ -1,9 +1,19 @@
 <section>
     <?php require_once './views/Home.php' ?>
 
-    <div class="col mt-5 container">
-        <div class="container row">
-            <div class="col mb-4">
+    <div class="col">
+            <nav class="navbar bg-body-tertiary ">
+                <div class="">
+                    <a class="navbar-brand text-dark" href="<?= BASE_URL ?>">Website</a>
+                </div>
+                <div class="icon me-5">
+                    <a href="<?= BASE_URL_ADMIN . '?act=logout-admin' ?>" onclick="return confirm('Bạn muốn đăng xuất?')">
+                        <img width="25" height="25" src="https://img.icons8.com/pixels/32/exit.png" alt="exit" />
+                    </a>
+                </div>
+            </nav>
+        <div class=" row mt-3">
+            <div class="col-sm-10">
                 <h1>Quản lý tài khoản khách hàng</h1>
             </div>
             <div class="col-sm-1">
@@ -26,6 +36,7 @@
                     <h4 class="mt-3">Số điện thoại: <small><?= $khachHang['sdt']?></small></h4>
                     <h4 class="mt-3">Giới tính: <small><?= $khachHang['gioi_tinh']==1 ?'Nam' :'Nữ' ?></small></h4>
                     <h4 class="mt-3">Địa chỉ: <small><?= $khachHang['dia_chi'] ?></small></h4>
+                    <h4 class="mt-3">Trạng thái: <small><?= $khachHang['trang_thai'] ==1 ?'Active': 'Inactive' ?></small></h4>
                 </div>
                 <div class="col-12">
           <hr>

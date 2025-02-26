@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 require_once '../configs/env.php';
 require_once '../configs/function.php';
 
@@ -15,7 +16,10 @@ require_once  './models/BinhLuan.php';
 require_once  './models/TaiKhoan.php';
 
 $act = $_GET['act'] ?? '/';
+if($act !== 'login-admin' && $act !== 'check-login-admin' && $act !== 'logout-admin') {
+checkLoginAdmin();
 
+}
 match ($act)
 {
     '/' => (new AdminDonHangController)->baoCao(),

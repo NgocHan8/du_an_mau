@@ -1,8 +1,18 @@
 <section>
     <?php require_once './views/Home.php'; ?>
 
-    <div class="col mt-5">
-        <div class="container">
+    <div class="col">
+            <nav class="navbar bg-body-tertiary ">
+                <div class="">
+                    <a class="navbar-brand text-dark" href="<?= BASE_URL ?>">Website</a>
+                </div>
+                <div class="icon me-5">
+                    <a href="<?= BASE_URL_ADMIN . '?act=logout-admin' ?>" onclick="return confirm('Bạn muốn đăng xuất?')">
+                        <img width="25" height="25" src="https://img.icons8.com/pixels/32/exit.png" alt="exit" />
+                    </a>
+                </div>
+            </nav>
+
             <h3>Danh sách tài khoản Quản Trị Viên</h3>
             <a href="<?= BASE_URL_ADMIN . '?act=form-them-tai-khoan-quan-tri' ?>"><button class="btn btn-success">Thêm tài khoản</button></a>
             <div class="mb-3">

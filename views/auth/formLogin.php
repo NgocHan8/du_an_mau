@@ -116,16 +116,12 @@
                     <div class="col-lg-12">
                         <div class="login-reg-form-wrap">
                             <h5 class="text-center">Đăng nhập</h5>
-                            <!-- <?php if (isset($_SESSION['error'])) { ?>
+                            <?php if (isset($_SESSION['error'])) { ?>
                                 <p class="text-danger login-box-msg text-center"><?= $_SESSION['error'] ?></p>
                             <?php  } else { ?>
                                 <p class="login-box-msg text-center">Vui lòng đăng nhập</p>
-                            <?php } ?> -->
-                            <?php if (isset($_SESSION['error'])) { ?>
-                                <p class="text-danger login-box-msg text-center">
-                                    <?= is_array($_SESSION['error']) ? implode('<br>', $_SESSION['error']) : $_SESSION['error']; ?>
-                                </p>
                             <?php } ?>
+                            
 
                             <form action="<?= BASE_URL . '?act=check-login' ?>" method="post">
                                 <div class="mb-3">
@@ -140,7 +136,7 @@
 
                                 <div class="single-input-item">
                                     <div class="login-reg-form-meta d-flex align-items-center justify-content-between">
-                                        <a href="#" class="forget-pwd">Quên Mật Khẩu</a>
+                                        <a href="<?=BASE_URL.'?act=forget-pass'?>" class="">Quên Mật Khẩu</a>
                                     </div>
                                 </div>
                                 <div class="single-input-item">

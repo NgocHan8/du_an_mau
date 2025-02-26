@@ -195,7 +195,6 @@
                 Thanh Toán Đơn Hàng
             </div>
         </div>
-
         <div class="checkout-content">
             <form class="checkout-form" method="POST" action="<?= BASE_URL . '?act=xu-ly-thanh-toan' ?>">
                 <div class="form-section">
@@ -260,18 +259,16 @@
                     <i class="fas fa-lock me-2"></i> Đặt Hàng Ngay
                 </button>
             </form>
-
             <div class="checkout-summary">
                 <div class="form-section-title">
+                <input type="text" placeholder="MÃ GIẢM GIÁ" class="mb-3" class=""><br>
                     <i class="fas fa-shopping-cart me-2"></i> Đơn Hàng Của Bạn
                 </div>
 
                 <div class="product-list">
                     <?php foreach ($chiTietGioHang as $sanPham): ?>
                         <div class="product-item">
-                            <div class="product-image">
-                                <img src="<?= BASE_URL . $sanPham['img'] ?>" ư alt="<?= $sanPham['ten_san_pham'] ?>">
-                            </div>
+                            
                             <div class="product-details">
                                 <div class="product-name text-truncate" title="<?= $sanPham['ten_san_pham'] ?>"><?= $sanPham['ten_san_pham'] ?></div>
                                 <div class="product-price"><?= number_format($sanPham['price'], 0, ',', '.') ?> đ</div>
@@ -297,26 +294,11 @@
                     <input type="hidden" name="tong_tien" value="<?= $tongTien + 30000 ?>">
                     <span><?= number_format($tongTien + 30000, 0, ',', '.' ) ?> đ</span>
                 </div>
-
-                <div class="mt-4">
-                    <div class="d-flex align-items-center mb-3">
-                        <i class="fas fa-shield-alt text-success me-2"></i>
-                        <span>Bảo mật thông tin thanh toán</span>
-                    </div>
-                    <div class="d-flex align-items-center mb-3">
-                        <i class="fas fa-undo text-success me-2"></i>
-                        <span>Chính sách đổi trả trong 7 ngày</span>
-                    </div>
-                    <div class="d-flex align-items-center">
-                        <i class="fas fa-phone-alt text-success me-2"></i>
-                        <span>Hỗ trợ 24/7: 1900 xxxx</span>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
 
-    <script>
+    <!-- <script>
         // Xử lý chọn phương thức thanh toán
         document.querySelectorAll('.payment-method').forEach(method => {
             method.addEventListener('click', function() {
@@ -333,7 +315,7 @@
                 document.getElementById('phuong_thuc_thanh_toan_id').value = paymentId;
             });
         });
-    </script>
+    </script> -->
 
     <?php require_once 'layout/Footer.php'; ?>
 </body>

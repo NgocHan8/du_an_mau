@@ -26,9 +26,16 @@ match ($act)
     'my-acount'=>(new HomeController())->myAcount(),
     'register'=>(new HomeController())->formRegister(),
     'check-register' =>(new HomeController())->Register(),
+    'forget-pass'=>(new HomeController())->formQuenPass(),
+    'reset-pass'=>(new HomeController())->checkMail(),
+    'form-pass'=>(new HomeController())->formPass(),
+    'post-reset-pass'=>(new HomeController())->postRessPass(),
 
     'search'=>(new HomeController())->search(),
+    'gioi-thieu'=>(new HomeController())->gioiThieu(),
+    'lien-he'=>(new HomeController())->LienHe(),
 
+    // sanr phẩm
     'list-san-pham'=>(new HomeController())->listSanPham(),
     'chi-tiet-san-pham'=>(new HomeController())->detailSanPham(),
 
@@ -42,6 +49,7 @@ match ($act)
     'lich-su-mua-hang'=>(new HomeController())->lichSuMuaHang(),
     'chi-tiet-don-hang'=>(new HomeController())->chiTietDonHang(),
     'huy-don-hang'=>(new HomeController())->huyDonHang(),
+    'form-danh-gia'=>(new HomeController())->danhGia()
 
 
     

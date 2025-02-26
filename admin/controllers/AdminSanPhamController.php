@@ -43,6 +43,7 @@ class AdminSanPhamController
             $ten_san_pham = $_POST['ten_san_pham'] ?? '';
             $price = $_POST['price'] ?? '';
             $quantity = $_POST['quantity'] ?? '';
+            $ngay_nhap = $_POST['ngay_nhap'] ?? '';
             $danh_muc_id = $_POST['danh_muc_id'] ?? '';
             $mo_ta = $_POST['mo_ta'] ?? '';
             $img = $_FILES['img'] ?? null;
@@ -57,7 +58,9 @@ class AdminSanPhamController
             if (empty($quantity)) {
                 $errors['quantity'] = 'Số lượng sản phẩm không để trống';
             }
-
+            if (empty($ngay_nhap)) {
+                $errors['ngay_nhap'] = 'Ngày nhập không để trống';
+            }
             if (empty($danh_muc_id)) {
                 $errors['danh_muc_id'] = 'Chọn danh mục sản phẩm';
             }
@@ -71,7 +74,7 @@ class AdminSanPhamController
             if (empty($errors)) {
                 $file_thumb = uploadFile($img, './assets/uploads/');
 
-                $san_pham_id = $this->modelSanPham->insertSanPham($ten_san_pham, $price, $file_thumb, $quantity, $danh_muc_id, $mo_ta);
+                $san_pham_id = $this->modelSanPham->insertSanPham($ten_san_pham, $price, $file_thumb, $quantity,$ngay_nhap, $danh_muc_id, $mo_ta);
 
                 header('location: ' . BASE_URL_ADMIN . '?act=san-pham');
                 exit;
@@ -109,6 +112,7 @@ class AdminSanPhamController
             $price = $_POST['price'] ?? '';
             $img = $_FILES['img'] ?? null;
             $quantity = $_POST['quantity'] ?? '';
+            $ngay_nhap = $_POST['ngay_nhap'] ?? '';
             $danh_muc_id = $_POST['danh_muc_id'] ?? '';
             $mo_ta = $_POST['mo_ta'] ?? '';
 
@@ -121,7 +125,9 @@ class AdminSanPhamController
             if (empty($price)) {
                 $errors['price'] = 'Giá sản phẩm không được dderr trống';
             }
-            
+            if (empty($ngay_nhap)) {
+                $errors['ngay_nhap'] = 'Ngày nhập không để trống';
+            }
 
             if (empty($quantity)) {
                 $errors['quantity'] = 'Số lượng sản phẩm không được dderr trống';
@@ -143,7 +149,7 @@ class AdminSanPhamController
                 $newFile = $oldFile;
             }
             if (empty($errors)) {
-                $san_pham_id = $this->modelSanPham->updateSanPham($san_pham_id, $ten_san_pham, $price, $newFile, $quantity, $danh_muc_id, $mo_ta);
+                $san_pham_id = $this->modelSanPham->updateSanPham($san_pham_id, $ten_san_pham, $price, $newFile, $quantity,$ngay_nhap, $danh_muc_id, $mo_ta);
 
                 header('location:' . BASE_URL_ADMIN . '?act=san-pham');
                 exit();

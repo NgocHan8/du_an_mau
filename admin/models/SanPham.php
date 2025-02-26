@@ -15,16 +15,17 @@ class SanPham
         $stmt->execute();
         return $stmt->fetchAll();
     }
-    public function insertSanPham($ten_san_pham, $price, $img, $quantity, $danh_muc_id, $mo_ta)
+    public function insertSanPham($ten_san_pham, $price, $img, $quantity,$ngay_nhap, $danh_muc_id, $mo_ta)
     {
-        $sql = 'INSERT INTO sanpham(ten_san_pham,price,img,quantity,danh_muc_id,mo_ta) 
-        VALUES(:ten_san_pham,:price,:img,:quantity,:danh_muc_id,:mo_ta)';
+        $sql = 'INSERT INTO sanpham(ten_san_pham,price,img,quantity,ngay_nhap,danh_muc_id,mo_ta) 
+        VALUES(:ten_san_pham,:price,:img,:quantity,:ngay_nhap,:danh_muc_id,:mo_ta)';
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([
             ':ten_san_pham' => $ten_san_pham,
             ':price' => $price,
             ':img' => $img,
             ':quantity' => $quantity,
+            ':ngay_nhap' => $ngay_nhap,
             ':danh_muc_id' => $danh_muc_id,
             ':mo_ta' => $mo_ta,
         ]);
@@ -40,10 +41,10 @@ class SanPham
         return $stmt->fetch();
     }
 
-    public function updateSanPham($san_pham_id,$ten_san_pham, $price, $img, $quantity, $danh_muc_id, $mo_ta)
+    public function updateSanPham($san_pham_id,$ten_san_pham, $price, $img, $quantity,$ngay_nhap, $danh_muc_id, $mo_ta)
     {
         $sql = 'UPDATE sanpham SET ten_san_pham = :ten_san_pham, price = :price, img = :img, 
-        quantity = :quantity, danh_muc_id = :danh_muc_id, mo_ta = :mo_ta
+        quantity = :quantity, ngay_nhap = :ngay_nhap, danh_muc_id = :danh_muc_id, mo_ta = :mo_ta
         WHERE id = :id';
         $stmt = $this->conn->prepare($sql);
         $stmt->execute([
@@ -51,6 +52,7 @@ class SanPham
             ':price' => $price,
             ':img' => $img,
             ':quantity' => $quantity,
+            ':ngay_nhap' => $ngay_nhap,
             ':danh_muc_id' => $danh_muc_id,
             ':mo_ta' => $mo_ta,
             ':id' => $san_pham_id,
